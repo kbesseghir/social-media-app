@@ -1,11 +1,17 @@
-import { Deck } from '@mui/icons-material'
+import { Deck,Mail, Notifications } from '@mui/icons-material'
 import SearchIcon from '@mui/icons-material/Search';
-import { AppBar, Toolbar,styled,Typography,alpha, InputBase } from '@mui/material'
+import { AppBar, Toolbar,styled,Typography,alpha, Box,InputBase, Badge, Avatar } from '@mui/material'
 import React from 'react'
-const StyledTool = styled(Toolbar)({
+
+const StyledTool =styled(Toolbar)(({theme})=>({
     display: 'flex',
-    justifyContent: 'space-between',
-})
+    justifyContent:"space-between"
+}))
+const Icon =styled(Box)(({theme})=>({
+    display: 'flex',
+    gap:"20px",
+   marginLeft:"7%"
+}))
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -15,10 +21,10 @@ const Search = styled('div')(({ theme }) => ({
     },
     
     [theme.breakpoints.up('md')]: {
-      marginLeft: theme.spacing(90),
+      marginLeft: theme.spacing(100),
       width: 'auto'},
       [theme.breakpoints.down('sm')]: {
-        marginLeft: theme.spacing(17),
+        marginLeft: theme.spacing(12),
         width: 'auto',
     },
 }));
@@ -49,24 +55,42 @@ function Navbar() {
    
   return (
     <AppBar position="sticky">
-    <StyledTool >
-    <Toolbar >
-       <Typography variant='h6' sx={{display:{xs:"none",sm:"block"}}}> BES Dev</Typography> 
-       <Deck  fontSize="large" sx={{display:{xs:"block",sm:"none"}}} />
-       <Search>
-       <SearchIconWrapper>
-         <SearchIcon />
-       </SearchIconWrapper>
-       <StyledInputBase
-         placeholder="Search…"
-         inputProps={{ 'aria-label': 'search' }}
-       />
-     </Search>
-        </Toolbar>
-    </StyledTool>
-        
-        </AppBar>
+        <StyledTool >
+            <Toolbar >
+        <Typography variant='h6' sx={{display:{xs:"none",sm:"block"}}}> BesDev</Typography> 
+        <Deck  fontSize="large" sx={{display:{xs:"block",sm:"none"}}} />
+        <Search>
+            <SearchIconWrapper>
+                <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+            />
+        </Search>
+        <Icon>
+            <Badge badgeContent={4} color='error'>
+                <Mail />
+            </Badge>
+            <Badge badgeContent={4} color='error'>
+                <Notifications />
+            </Badge>
+            <Avatar sx={{width:30,height:30}} src=''/>
+    
+    
+    
+        </Icon>
+            </Toolbar>
+        </StyledTool>
+            
+    </AppBar>
   )
 }
 
-export default Navbar
+
+
+
+
+
+
+export default Navbar;
